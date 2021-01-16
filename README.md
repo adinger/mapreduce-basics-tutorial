@@ -1,4 +1,4 @@
-# MapReduce as a Foundation for Big Data Frameworks
+# MapReduce Overview
 
 This post illustrates the basic operations in a MapReduce job. Modern big data frameworks like Spark, Flink, Pig, Hive, and even Java 8 and Python all provide interfaces for these operations, so it is highly beneficial have an understanding of them in order to work with these tools. The operations that comprise the MapReduce paradigm are map, reduce, partition, group, sort, and combine. I will explain each of them using an example of counting different types of fruit in a basket as an example.
 
