@@ -58,7 +58,7 @@ group((grape, 6))    -> reducer_2, group_g
 ```
 
 ### 5. Reduce
-A Reducer can make multiple reduce() calls (in a for loop, essentially), and reduces them into a lesser number of outputs. N inputs, N or less outputs. Remember, a Reducer can receive multiple groups of items, and one reduce() call within a Reducer receives only one group. The actual reducing computation is implemented within a reduce() call. For our fruit counting example, we want each reduce() call to sum up the counts of the fruit it's assigned.
+A Reducer can make multiple reduce() calls (in a for loop, essentially), and reduces them into a lesser number of outputs. N inputs, N or less outputs. Remember, a Reducer can receive multiple groups of items, and one reduce() call inside a Reducer receives only one group. In a Java MapReduce application, each Reducer runs in its own JVM on the node to which it's assigned. The reducing logic is implemented within a reduce() call. For our fruit counting example, we want each reduce() call to sum up the counts of the fruit it's assigned.
 
 ```
 reducer_1:
@@ -69,7 +69,7 @@ reduce((banana, 3))              -> (banana, 3)
 reduce((grape, 8), (grape, 6))   -> (grape, 14)
 ```
 
-Each reducer outputs one file, so we would have two files, with the following contents.
+Each reducer outputs one file, so the output of the whole MapReduce application will be two files:
 
 reducer_1.txt:
 ```
