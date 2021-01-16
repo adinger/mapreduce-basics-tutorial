@@ -16,7 +16,7 @@ map((apple, red, 2))     -> (apple, 2)
 ```
 
 ### 2. Sort
-Sorting happens in what is called the "shuffling" phase of a MapReduce job, defined as the step where data moves between nodes. This does a global sort of all keys. The default sorting logic can be overwritten. You can use a sorter by implementing a compare() method, which needs to take two keys as inputs, and outputs one of three things: 1 (key 1 > key 2), -1 (key 1 < key 2), or 0 (key 1 = key 2).  Say we want the output to be sorted by ascending alphabetical order of the fruit's name, then the output of the sorter would be the following.
+Sorting happens in what is called the "shuffling" phase of a MapReduce job, defined as the step where data moves between nodes. This does a global sort of all keys. The default sorting logic can be overwritten. You can use a sorter by implementing a compare() method, which needs to take two keys as inputs, and outputs one of three things: `1` (key 1 > key 2), `-1` (key 1 < key 2), or `0` (key 1 = key 2).  Say we want the output to be sorted by ascending alphabetical order of the fruit's name, then the output of the sorter would be the following.
 
 ```
 sort((grape, 8),
