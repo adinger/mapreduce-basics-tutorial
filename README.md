@@ -1,9 +1,11 @@
 # MapReduce Overview
 
-This post illustrates the basic operations in a MapReduce job. Modern big data frameworks like Spark, Flink, Pig, Hive, and even Java 8 and Python all provide interfaces for these operations, so it is highly beneficial have an understanding of them in order to work with these tools. The operations that comprise the MapReduce paradigm are map, reduce, partition, group, sort, and combine. I will explain each of them using an example of counting different types of fruit in a basket as an example.
+This article illustrates the basic operations in the MapReduce programming paradigm. Modern big data frameworks like Spark, Flink, Pig, and Hive, and most functional programming languages, all provide interfaces for these common operations in some form or another, so understanding them will help you learn these technologies more easily. The operations that comprise the MapReduce paradigm are map, reduce, partition, group, sort, and combine. 
+
+MapReduce is derived from functional programming concepts. Each of these operations are higher order functions, which in layman's terms means their behavior can be customized by passing them a function you define. I will explain all of these operations using an example of counting different types of fruit in a basket.
 
 ### 1. Map
-This does exactly what the name implies. It outputs a map. Each map() call takes in one input, and outputs zero or one outputs. If we want to count how many of each type of fruit are in a basket, map would output a tuple of (fruit_type, count)
+This does exactly what the name implies. It outputs a map, or a dictionary. Each map() call takes in one item, and outputs zero or one items. If we want to count how many of each type of fruit are in a basket, map would output a tuple of (fruit_type, count)
 
 ```
 map((grape, green, 8))   -> (grape, 8)
@@ -34,7 +36,7 @@ sort((grape, 8),
 ```
 
 ### 3. Partition
-After sorting, the framework needs to decide where to send each item. This is called partitioning, and it also happens in the "shuffling" phase. The partitioner tells the job which reducer, and effectively which node in a Hadoop cluster, to send each item to. In a MapReduce application, each reducer is identified by computing a hash of the item. This behavior can be overwritten to use custom hashing logic. Just remember, each partition is associated with a reducer.
+After sorting, the framework needs to decide where to send each item. This is called partitioning, and it also happens in the "shuffling" phase. The partitioner tells the job which reducer, and effectively which node in a cluster, to send each item to. In a MapReduce application, each reducer is identified by computing a hash of the item. This behavior can be overwritten to use custom hashing logic. Just remember, each partition is associated with a reducer.
 
 ```
 partition((apple, 4))   -> reducer_1
