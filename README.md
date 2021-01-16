@@ -69,15 +69,43 @@ reduce((grape, 8), (grape, 6))   -> (grape, 14)
 
 Each reducer outputs one file, so we would have two files, with the following contents.
 
-File 1:
+reducer_1.txt:
 ```
 (apple, 6)
 ```
 
-File 2:
+reducer_2.txt:
 ```
 (banana, 3)
 (grape, 14)
 ```
 
+### 6. Bonus: Combine
+A Combiner is a special kind of reducer that operates on the map side. The purpose is to reduce I/O across the network because it locally reduces the number of items on the node running the mapper before sending them to the reducers. Unlike a reducer, the input key schema and output key schema must be the same. 
+
+For example, the reducer can output just the counts:
+
+```
+reducer_1:
+reduce((apple, 4), (apple, 2))   -> (6)
+
+reducer_2:
+reduce((banana, 3))              -> (3)
+reduce((grape, 8), (grape, 6))   -> (14)
+```
+
+However, the combiner's input and output must both have the format (fruit, count):
+
+```
+reducer_1:
+reduce((apple, 4), (apple, 2))   -> (apple, 6)
+
+reducer_2:
+reduce((banana, 3))              -> (banana, 3)
+reduce((grape, 8), (grape, 6))   -> (grape, 14)
+```
+
+The reason for the input and output formats being the same is multiple combine operations will run in a chain, so the output of one combiner can be the input of the subsequent combiner.
+
+### Stay Tuned
 The next post will demonstrate how to implement the fruit-counting example in Java MapReduce code.
