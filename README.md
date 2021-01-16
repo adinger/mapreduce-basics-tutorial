@@ -1,5 +1,7 @@
 # MapReduce Overview
 
+By: Angela Ding
+
 This article illustrates the basic operations in the MapReduce programming paradigm. Modern big data frameworks like Spark, Flink, Pig, and Hive, and most functional programming languages, all provide interfaces for these common operations in some form or another, so understanding them will help you learn these technologies more easily. The operations that comprise the MapReduce paradigm are map, reduce, partition, group, sort, and combine. 
 
 MapReduce is derived from functional programming concepts. Each of these operations are higher order functions, which in layman's terms means their behavior can be customized by passing them a function you define. I will explain all of these operations using an example of counting different types of fruit in a basket.
